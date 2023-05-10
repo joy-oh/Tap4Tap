@@ -79,11 +79,11 @@ public class SQLUtils {
     }
 
 
-    public static int executeSQLInsert(Connection conn, String query, String recID, String... arguments) {
+    public static int executeSQLInsert(Connection conn, String query, String primaryKey, String... arguments) {
         logger.debug("Executing SQL Insert: {}", query);
 
         int newID = -1;
-        String[] returnColumns = new String[] { recID };
+        String[] returnColumns = new String[] { primaryKey };
 
         try ( PreparedStatement stmt = conn.prepareStatement(query, returnColumns); ) {
             // Create the new statement object, specifying the recID return column as well
