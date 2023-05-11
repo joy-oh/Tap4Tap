@@ -6,7 +6,7 @@ import edu.lwtech.csd297.tap4tap.pojos.SearchParameter;
 
 // Generic Data Access Object (DAO) Interface
 
-public interface DAO<T, K> {
+public interface DAO<T> {
 
     // Life Cycle ----------------------------------------
     boolean initialize(String initParams);
@@ -14,27 +14,30 @@ public interface DAO<T, K> {
     void terminate();
 
     // Create --------------------------------------------
-    int insert(T item);
+    String insert(T item);
 
     // Retrieve ------------------------------------------
     // ...one at a time
-    T retrieveByID(K id);
+    T retrieveByID(String id);
 
     T retrieveByIndex(int index);
 
     // ...all at once
+    List<T> retrieveByName(String naame);
+
     List<T> retrieveAll();
 
-    List<K> retrieveAllIDs();
+    List<String> retrieveAllIDs();
+
 
     // ...some at a time
-    List<T> search(SearchParameter[] params);
+    List<T> search(String[] params);
 
     // Update ---------------------------------------------
     boolean update(T item);
 
     // Delete ---------------------------------------------
-    void delete(K id);
+    void delete(String id);
 
     // Miscellaneous -------------------------------------
     int size();
