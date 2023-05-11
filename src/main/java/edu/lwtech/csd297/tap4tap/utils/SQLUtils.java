@@ -33,8 +33,12 @@ public class SQLUtils {
         logger.debug("Connected!");
         return conn;
     }
+    
+    public static List<SQLRow> executeSQL(Connection conn, String query){
+        return executeSQL(conn, query, new String[0]);
+    }
 
-    public static List<SQLRow> executeSQL(Connection conn, String query, String... arguments) {
+    public static List<SQLRow> executeSQL(Connection conn, String query, String[] arguments) {
         logger.debug("Executing SQL statement: {}", query);
 
         try ( PreparedStatement stmt = conn.prepareStatement(query); ) {
