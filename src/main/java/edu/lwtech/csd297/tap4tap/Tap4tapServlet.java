@@ -61,9 +61,10 @@ public class Tap4tapServlet extends HttpServlet {
         //to connect to database
 
         boolean useSqlDao = true;
-
-        String username = Login.username;
-        String password = Login.password;
+        //put username
+        String username = "tap4tap";
+        //put password
+        String password = System.getProperty("tap4tap_password");
 
         if (useSqlDao) {
             String initParams = "jdbc:mariadb://" + Login.hostname + ":" + Login.port + "/" + Login.database + "?user=" + username + "&password=" + password;
